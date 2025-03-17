@@ -1,7 +1,7 @@
 from telebot.states import State, StatesGroup
 
+
 class MyStates(StatesGroup):
-    name = State()
-    age = State()
-    color = State()
-    hobby = State()
+    search = State()
+    history = State()
+    movies_rating = State()

@@ -1,50 +1,43 @@
-from typing import Dict
 import requests
+from typing import Dict, Optional
+
+from diploma.config_data.config import API_KEY, HOST_API
 
 
-def _make_response(method: str, url: str, headers: Dict, params: Dict,
-                    timeout: int, success=200):
-    response = requests.request(method, url, headers=headers, params=params,
-                                timeout=timeout)
+api_key = API_KEY
 
-    status_code = response.status_code
+class KinoPoiskAPI:
+    BASE_URL = HOST_API
+    TIMEOUT = 10
 
-    if status_code == success:
-        return response
+    def __init__(self, api_key: str):
+        self.headers = {"X-API-KEY": api_key}
 
-    return status_code
+    def _make_request(self, endpoint: str, params: Optional[Dict] = None):
+        url = f"{self.BASE_URL}{endpoint}"
+        response = requests.get(url, headers=self.headers, params=params, timeout=self.TIMEOUT)
 
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return {"error": response.status_code, "message": response.text}
 
-def _get_collections(method: str, url: str, headers: Dict, params: Dict, date_day: str,
-                    date_month: str, timeout: int, func=_make_response):
-    url = "{0}/{1}/{2}/date".format(url, date_month, date_day)
+    def search_movie(self, title: str, limit: int = 5):
+        """Поиск фильма по названию."""
+        params = {"name": title, "limit": limit}
+        return self._make_request("/v1.3/movie", params)
 
-    response = func(method, url, headers=headers, params=params,
-                    timeout=timeout)
-    return response
+    def get_movies_by_rating(self, rating: int, limit: int = 5):
+        """Получить фильмы с определённым рейтингом."""
+        params = {"rating.kp": rating, "limit": limit}
+        return self._make_request("/v1.3/movie", params)
 
-def _get_math_fact(method: str, url: str, headers: Dict, params: Dict,
-                    number: int, timeout: int, func=_make_response):
-    url = "{0}/{1}/math".format(url, number)
-
-    response = func(method, url, headers=headers, params=params, timeout=timeout)
-    return response
-
-class SiteApiInterface():
-
-    @staticmethod
-    def get_date_fact():
-        return _get_collections
-
-    @staticmethod
-    def get_math_fact():
-        return _get_math_fact
-
-if __name__=="__main__":
-    _make_response()
-    _get_collections()
-    _get_math_fact()
-
-    SiteApiInterface()
+    # def get_person_by_name(self, query: str, page: int = 1, limit: int = 1):
+    #     """Получить информацию по актеру."""
+    #     params = {"query": query, "page": page, "limit": limit}
+    #     return self._make_request("/v1.4/person/search", params)
 
 
+
+# api = KinoPoiskAPI(API_KEY)
+# print(api.get_person_by_name('Адам Сендлер'))

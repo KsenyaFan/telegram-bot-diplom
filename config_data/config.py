@@ -6,17 +6,20 @@ if not find_dotenv():
 else:
     load_dotenv()
 
+
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-RAPID_API_KEY = os.getenv("X-API-KEY")
+API_KEY = os.getenv("X-API-KEY")
 HOST_API = os.getenv("HOST_API")
 
+DB_PATH = 'lecture.db'
 
 DEFAULT_COMMANDS = (
     ("start", "Запустить бота"),
     ("help", "Вывести справку"),
     ("helloworld", "Приветствие"),
     ("history", "Вывести историю запросов"),
-    ("search", "Поиск фильма по названию")
+    ("search", "Поиск фильма по названию"),
+    ("movies_rating", "Поиск фильмов по рейтингу"),
+    ("person_name", "Фильмы по имени актера"),
 )
-
 

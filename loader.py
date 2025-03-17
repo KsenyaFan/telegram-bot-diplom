@@ -1,14 +1,18 @@
-import telebot
+from telebot import TeleBot
 from telebot.storage import StateMemoryStorage
+
 from diploma.config_data.config import BOT_TOKEN
-import os
-from dotenv import load_dotenv
 
-
+# print(f"Токен бота: {BOT_TOKEN[:10]}...")
 storage = StateMemoryStorage()
-bot = telebot.TeleBot(token=BOT_TOKEN, state_storage=storage)
-# print(await bot.get_webhook_info())
+print("Импортируем loader.py...")
+bot = TeleBot(token=BOT_TOKEN, state_storage=storage)
+print(storage)
 
+
+#
+# if __name__ == "__main__":
+#     app.run(port=5000)
 
 
 

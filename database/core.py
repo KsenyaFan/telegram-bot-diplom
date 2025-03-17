@@ -1,11 +1,3 @@
-from diploma.database.util.CRUD import CURDInteface
-from .common.models import db, History
+from peewee import SqliteDatabase
 
-
-db.connect()
-db.create_tables([History])
-
-crud = CURDInteface()
-
-if __name__ == '__main__':
-    crud()
+db = SqliteDatabase("lecture.db")
