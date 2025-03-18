@@ -20,4 +20,5 @@ def save_search_history(user_id: int, movie_title: str, result: str) -> None:
     """Сохранение истории поиска в базу"""
     user, created = User.get_or_create(user_id=user_id,
         defaults={"username": "Unknown"})
-    store_data(MovieSearchHistory,{"user": user_id, "movie_title": movie_title, "result": result})
+    store_data(MovieSearchHistory, {"user": user_id, "movie_title": movie_title, "result": result}
+                    )

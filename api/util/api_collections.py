@@ -32,10 +32,10 @@ class KinoPoiskAPI:
         params = {"rating.kp": rating, "limit": limit}
         return self._make_request("/v1.3/movie", params)
 
-    # def get_person_by_name(self, query: str, page: int = 1, limit: int = 1):
-    #     """Получить информацию по актеру."""
-    #     params = {"query": query, "page": page, "limit": limit}
-    #     return self._make_request("/v1.4/person/search", params)
+    def get_person_by_name(self, query: str, page: int = 1, limit: int = 1):
+        """Получить информацию по актеру."""
+        params = {"query": query, "page": page, "limit": limit}
+        return self._make_request("/v1.4/person/search", params)
 
 
 

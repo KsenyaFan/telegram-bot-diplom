@@ -13,7 +13,7 @@ def register_handlers(bot):
             bot.reply_to(message, f"Привет, {user.username}!")
         else:
             bot.reply_to(message, f"С возвращением, {user.username}! 👋")
-        bot.send_message(message.chat.id, f"Выберите действие:",
-                         reply_markup=movie_buttons()
-                         )
+        # bot.send_message(message.chat.id, f"Выберите действие:",
+        #                  reply_markup=movie_buttons()
+        #                  )
 

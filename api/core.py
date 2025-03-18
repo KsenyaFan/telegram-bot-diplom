@@ -7,12 +7,12 @@ site_api = KinoPoiskAPI(api_key=api_key)
 
 query = "Inception"
 headers = {
-    "X-API-KEY": api_key,  # Добавляем API-ключ
+    "X-API-KEY": api_key,
     "accept": "application/json"
 }
 
-url = f"{HOST_API}/movie"  # Добавляем endpoint
-params = {"name": query, "limit": 5}  # Используем name вместо query
+url = f"{HOST_API}/movie"
+params = {"name": query, "limit": 5}
 
 site_api = KinoPoiskAPI(api_key=api_key)
 
