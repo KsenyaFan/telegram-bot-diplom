@@ -1,6 +1,7 @@
 from telebot.types import Message
 
-from diploma.loader import bot
+# from loader import bot
+
 
 # Команда приветствия
 def register_handlers(bot):

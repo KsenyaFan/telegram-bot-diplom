@@ -1,5 +1,5 @@
-from diploma.config_data.config import API_KEY, HOST_API
-from diploma.api.util.api_collections import KinoPoiskAPI
+from config_data.config import API_KEY, HOST_API
+from api.util.api_collections import KinoPoiskAPI
 
 
 api_key = API_KEY

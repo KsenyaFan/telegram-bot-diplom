@@ -1,17 +1,19 @@
 # from loader import bot
 from utils.set_bot_commands import set_default_commands
-from diploma.handlers.default_handlers import start, help, hello_world
-from diploma.handlers.custom_handlers import command
-import diploma.loader
+from handlers.default_handlers import start, help, hello_world
+from handlers.custom_handlers import command, history
+from loader import bot
+
+bot = bot
 
 
-bot = diploma.loader.bot
 def register_handlers():
-
     start.register_handlers(bot)
     help.register_handlers(bot)
     hello_world.register_handlers(bot)
     command.register_handlers(bot)
+    history.register_handlers(bot)
+
 
 register_handlers()
 

@@ -1,7 +1,7 @@
 from telebot import TeleBot
 from telebot.storage import StateMemoryStorage
 
-from diploma.config_data.config import BOT_TOKEN
+from config_data.config import BOT_TOKEN
 
 
 storage = StateMemoryStorage()
